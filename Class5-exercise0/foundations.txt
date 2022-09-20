@@ -1,0 +1,4 @@
+Data types are the programming languages used, and what it could be used for.
+Operators are used to compare valuses and perform equations.
+Conditional statements are the features of programming languages that have certain actions that they cooperate with.
+A loop is a code line that repeats until an exact condition is achieved.
