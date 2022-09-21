@@ -4,31 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Stop Watch</title>
+
+    <style>
+        body, .jumbotron { padding: 30px; }
+        .timer {
+            font-size:120px;
+        }
+    </style>  
 </head>
-
-
-    <body { padding: 30px; }>
-        <div class="jumobotron">
-            <h2>
-                how much do pies cost
-            </h2>
-        
-            <form>
-
-                <div class="form-group">
-                    <label for="prtice">Price</label>
-                    <input type="text" class="form-control" name="price" value="30">
-                </div>
-
-                <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" class="form-control" name="quantity" value="1">
-
-                </div>
-            </form>
+    <body>
+       <div class="jumbotron text-center">
+        <!-- timer-->
+        <div class="timer">
+            <span class="minutes">00</span> : <span class="seconds">00</span>
+        </div>
+        <!-- timer buttons-->
+        <button class="btn btn-lg btn-success" data-action="start">
+            Start
+        </button>
+        <button class="btn btn-lg btn-danger" data-action="stop">
+            Stop
+        </button>
+        <button class="btn btn-link btn-block" data-action="reset">
+            Reset
+        </button>
+       </div>
        <script>
+        const startButton = document.querySelector('[data-action="start"]');
+        const stopButton = document.querySelector('[data-action="stop"]');
+        const resetButton = document.querySelector('[data-action="reset"]');
+        const minutes = document.querySelector('.minutes');
+        const seconds = document.querySelector('.seconds');
+        let timerTime = 57;
 
-        </script>
+        setInterval(function() {
+            timerTime++;
+
+            const numOfMinutes = Math.floor(timerTime / 60);
+            const numOfSeconds = timerTime % 60;
+
+            minutes.innerText = numOfMinutes;
+            seconds.innerText = numOfSeconds;
+        }, 1000)
+
+        function startTimer(){
+
+        }
+
+        function stopTimer(){
+            
+        }
+
+        function resetTimer(){
+            
+        }
+
+        function pad(number){
+            if (number < 20){
+                return'0' + number
+            } else {
+                return number;
+            }
+        }
+
+        startButton.addEventListener('click', startTimer);
+        stopButton.addEventListener('click', stopTimer);
+        resetButton.addEventListener('click', resetTimer)
+       </script>
     </body>
 </html>
