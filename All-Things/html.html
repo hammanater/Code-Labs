@@ -4,73 +4,111 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop Watch</title>
+    <title>Accordion</title>
 
     <style>
         body, .jumbotron { padding: 30px; }
-        .timer {
-            font-size:120px;
+        html {
+            overflow-y: scroll;
+        }
+        body {
+            background: #efefef
+        }
+        ul {
+            margin-bottom: 0; 
+        }
+        .accordion {
+            background: #fff;
+            border-radius: 5px;
+            padding: 30px;
+        }
+
+        .question {
+            border-top:5px ;
+            padding: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        .question h2 {
+            font-size: 20px;
+            margin: 0;
+            color: #C00C00;
+        }
+        .question .glyphicon {
+            position: absolute;
+            right: 20px;
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: #C00C00;
+            transition: is cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        }
+
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: is cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        }
+        .answer p {
+            padding: 20px;
+
+        }
+        accordion li.open .question .glyphicon {
+            transform: roatate(180deg);
+        }
+        .accordion li.open .answer {
+            max-height: 150px;
         }
     </style>  
 </head>
     <body>
-       <div class="jumbotron text-center">
-        <!-- timer-->
-        <div class="timer">
-            <span class="minutes">00</span> : <span class="seconds">00</span>
+       <div class="container">
+
+        <div class="accordion">
+            <ul class="list-unstyled">
+                <li class="open">
+                    <div class="question">
+                        <h2>Will I be rich?</h2>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </div>
+                    <div class="answer">
+                        <p>Whatever you want! Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis minima laborum perspiciatis praesentium. Sint numquam impedit temporibus qui officia, nostrum doloribus fugit tempora veniam repellendus laboriosam, asperiores labore error atque.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="question">
+                        <h2>Whats for Dinner?</h2>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </div>
+                    <div class="answer">
+                        <p>Absolutely! Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis minima laborum perspiciatis praesentium. Sint numquam impedit temporibus qui officia, nostrum doloribus fugit tempora veniam repellendus laboriosam, asperiores labore error atque.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="question">
+                        <h2>Is Javascript Awesome??</h2>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </div>
+                    <div class="answer">
+                        <p>Yes! Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis minima laborum perspiciatis praesentium. Sint numquam impedit temporibus qui officia, nostrum doloribus fugit tempora veniam repellendus laboriosam, asperiores labore error atque.</p>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <!-- timer buttons-->
-        <button class="btn btn-lg btn-success" data-action="start">
-            Start
-        </button>
-        <button class="btn btn-lg btn-danger" data-action="stop">
-            Stop
-        </button>
-        <button class="btn btn-link btn-block" data-action="reset">
-            Reset
-        </button>
+
        </div>
        <script>
-        const startButton = document.querySelector('[data-action="start"]');
-        const stopButton = document.querySelector('[data-action="stop"]');
-        const resetButton = document.querySelector('[data-action="reset"]');
-        const minutes = document.querySelector('.minutes');
-        const seconds = document.querySelector('.seconds');
-        let timerTime = 57;
+        const accordion = document.querySelector('.accordion');
+        const items = accordion.querySelectorAll('li');
+        const questions = accordion.querySelectorAll('.question')
 
-        setInterval(function() {
-            timerTime++;
-
-            const numOfMinutes = Math.floor(timerTime / 60);
-            const numOfSeconds = timerTime % 60;
-
-            minutes.innerText = numOfMinutes;
-            seconds.innerText = numOfSeconds;
-        }, 1000)
-
-        function startTimer(){
-
+        function toggleAccordion() {
+            const thisItem = this.parentNode
+            console.log(this.parentNode);
+            thisItem.classList.toggle('open');
         }
-
-        function stopTimer(){
-            
-        }
-
-        function resetTimer(){
-            
-        }
-
-        function pad(number){
-            if (number < 20){
-                return'0' + number
-            } else {
-                return number;
-            }
-        }
-
-        startButton.addEventListener('click', startTimer);
-        stopButton.addEventListener('click', stopTimer);
-        resetButton.addEventListener('click', resetTimer)
+        questions.forEach(question => question.addEventListener('click', toggleAccordion))
        </script>
     </body>
 </html>
