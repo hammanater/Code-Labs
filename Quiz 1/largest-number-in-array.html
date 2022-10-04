@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="hi"></p>
+    <script>
+        document.getElementById("hi").innerHTML = Math.max.apply(null, [5,2,8,3,12,0,4])
+        let numbers = [5,2,8,3,12,0,4]
+
+        function findLargestNumber(arr){
+            Math.max.apply([5,2,8,3,12,0,4]);
+            console.log(Math.max.apply)
+        }
+        findLargestNumber(numbers)
+    </script>
+</body>
+</html>
