@@ -1,9 +1,9 @@
 // Add two numbers
 
 // Add definition
-function add(a:number, b:number){
+function add2(a:number, b:number){
     console.log(a + b)
 }
 
 // Calling add
-add(5, 64)
+add2(5, 64)
