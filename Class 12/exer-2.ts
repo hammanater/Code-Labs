@@ -1,0 +1,1 @@
+let myDogsName: string = "Trap"
